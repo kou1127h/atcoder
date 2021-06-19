@@ -1,1 +1,1 @@
-print(min(list(map(int, input().split()))))
+print("Black") if int(input()) % 2 != 0 else print("White")
