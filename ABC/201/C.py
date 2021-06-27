@@ -13,4 +13,10 @@ for i, s in enumerate(S):
         maybe.append(i)
 
 count = 0
+
+# ◯を全種類持っている
+# xを一つも持っていない
+# def check(item):
+#     for item
+
 # for i in range(10 ** 4):
