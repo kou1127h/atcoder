@@ -1,23 +1,28 @@
 N = int(input())
-S = input()
+S = [i for i in input()]
 Q = int(input())
 
+reversed = -1
+ans = ""
 for i in range(Q):
     t, a, b = map(int, input().split())
-    # TLE
-    # https://qiita.com/bee2/items/4ab87d05cc03d53e19f9
-    if t == 1:
-        sa = S[a-1]
-        sb = S[b-1]
-        sTop = ""
-        sMiddle = S[a:b-1]
-        sBottom = ""
-        if a != 1:
-            sTop = S[:a-1]
-        if b != 2 * N:
-            sBottom = S[b:]
-
-        S = sTop + sb + sMiddle + sa + sBottom
+    if t == 2:
+        reversed *= -1
     else:
-        S = S[N:]+S[:N]
-print(S)
+        a -= 1
+        b -= 1
+        if reversed == 1:
+            if a >= N:
+                a = a - N
+            else:
+                a = a + N
+            if b >= N:
+                b = b - N
+            else:
+                b = b + N
+        S[a], S[b] = S[b], S[a]
+if reversed == 1:
+    ans = ''.join(S[N:]) + ''.join(S[:N])
+else:
+    ans = ''.join(S)
+print(ans)
