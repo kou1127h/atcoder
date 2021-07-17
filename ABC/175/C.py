@@ -1,17 +1,16 @@
 X, K, D = list(map(int, input().split()))
 
-if K == 1:
-    print(min(abs(X+D), abs(X-D)))
+if X < 0:
+    X = -X
+
+A = X % D
+B = X // D
+ans = 0
+if B >= K:
+    ans = X - D * K
 else:
-    ans = 0
-
-    if X + D * K < 0:
-        ans = abs(X + D * K)
-    if X - D * K > 0:
-        ans = abs(X - D * K)
-
-    ok = X + K * D
-    ng = X - K * D
-
-
-# while
+    if (K - B) % 2 == 0:
+        ans = A
+    else:
+        ans = abs(A - D)
+print(ans)
